@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Queueless" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Queueless" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <style name="Theme.QueueLess.Compose" parent="Theme.Material3.DayNight.NoActionBar"/>
+
 </resources>
