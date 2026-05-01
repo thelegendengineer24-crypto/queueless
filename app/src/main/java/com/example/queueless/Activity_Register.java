@@ -13,13 +13,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-public class activity_register extends AppCompatActivity {
+public class Activity_Register extends AppCompatActivity {
 
     TextInputEditText nameEt, emailEt, passwordEt;
     MaterialButton registerBtn;
 
     FirebaseAuth mAuth;
     FirebaseFirestore db;
+
+    String role = "user"; // default
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,12 @@ public class activity_register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        // Get role from intent
+        String intentRole = getIntent().getStringExtra("role");
+        if (intentRole != null) {
+            role = intentRole;
+        }
+
         registerBtn.setOnClickListener(v -> registerUser());
     }
 
@@ -43,7 +51,7 @@ public class activity_register extends AppCompatActivity {
         String email = emailEt.getText().toString().trim();
         String password = passwordEt.getText().toString().trim();
 
-        if(name.isEmpty() || email.isEmpty() || password.isEmpty()){
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "All fields required", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -56,18 +64,30 @@ public class activity_register extends AppCompatActivity {
                     HashMap<String, Object> userMap = new HashMap<>();
                     userMap.put("name", name);
                     userMap.put("email", email);
-                    userMap.put("role", "user"); // default role
+                    userMap.put("role", role);
 
                     db.collection("Users")
                             .document(userId)
-                            .set(userMap);
+                            .set(userMap)
+                            .addOnSuccessListener(unused -> {
 
-                    Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
+                                if ("admin".equals(role)) {
+                                    startActivity(new Intent(this, Activity_Admindashboard.class));
+                                } else {
+                                    startActivity(new Intent(this, Activity_Userdashboard.class));
+                                }
+                                finish();
+
+                            })
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(this, "Firestore Error: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                            );
+
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show());
+                        Toast.makeText(this, "Auth Error: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
     }
 }

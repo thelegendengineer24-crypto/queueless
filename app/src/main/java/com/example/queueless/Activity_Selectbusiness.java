@@ -1,7 +1,6 @@
 package com.example.queueless;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,16 +17,16 @@ import java.util.ArrayList;
 
 public class Activity_Selectbusiness extends AppCompatActivity {
 
-    private TextInputEditText etSearchId;
-    private MaterialButton btnSearch;
-    private TextView tvBusinessName;
-    private RecyclerView recyclerServices;
+    TextInputEditText etSearchId;
+    MaterialButton btnSearch;
+    TextView tvBusinessName;
+    RecyclerView recyclerServices;
 
-    private FirebaseFirestore db;
-    private ArrayList<String> serviceList;
-    private ServiceAdapter adapter;
+    FirebaseFirestore db;
+    ArrayList<String> serviceList;
+    ServiceAdapter adapter;
 
-    private String businessDocId = "";
+    String businessDocId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +51,7 @@ public class Activity_Selectbusiness extends AppCompatActivity {
 
     private void searchBusiness() {
 
-        if (etSearchId.getText() == null) {
-            Toast.makeText(this, "Enter Business ID", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         String enteredId = etSearchId.getText().toString().trim();
-
-        if (TextUtils.isEmpty(enteredId)) {
-            Toast.makeText(this, "Enter Business ID", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         db.collection("businesses")
                 .whereEqualTo("uniqueId", enteredId)
@@ -71,31 +60,19 @@ public class Activity_Selectbusiness extends AppCompatActivity {
 
                     if (queryDocumentSnapshots.isEmpty()) {
                         Toast.makeText(this, "Business Not Found", Toast.LENGTH_SHORT).show();
-                        tvBusinessName.setText("");
-                        serviceList.clear();
-                        adapter.notifyDataSetChanged();
                         return;
                     }
 
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
 
                         businessDocId = doc.getId();
-
-                        String name = doc.getString("businessName");
-                        tvBusinessName.setText(name != null ? name : "No Name");
-
+                        tvBusinessName.setText(doc.getString("businessName"));
                         loadServices();
-                        break; // only first match needed
                     }
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
-                );
+                });
     }
 
     private void loadServices() {
-
-        if (businessDocId.isEmpty()) return;
 
         db.collection("businesses")
                 .document(businessDocId)
@@ -105,21 +82,11 @@ public class Activity_Selectbusiness extends AppCompatActivity {
 
                     serviceList.clear();
 
-                    if (queryDocumentSnapshots.isEmpty()) {
-                        Toast.makeText(this, "No Services Found", Toast.LENGTH_SHORT).show();
-                    }
-
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        String serviceName = doc.getString("serviceName");
-                        if (serviceName != null) {
-                            serviceList.add(serviceName);
-                        }
+                        serviceList.add(doc.getString("serviceName"));
                     }
 
                     adapter.notifyDataSetChanged();
-                })
-                .addOnFailureListener(e ->
-                        Toast.makeText(this, "Failed to load services", Toast.LENGTH_SHORT).show()
-                );
+                });
     }
 }

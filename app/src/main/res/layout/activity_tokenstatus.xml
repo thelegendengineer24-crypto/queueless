@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradiente">
+
+    <!-- App Logo -->
+    <TextView
+        android:id="@+id/appLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QueueLess"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_margin="16dp"/>
+
+    <!-- Estimated Time -->
+    <TextView
+        android:id="@+id/txtTimeEstimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Time: 15 mins"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/appLogo"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Main Card -->
+    <LinearLayout
+        android:id="@+id/mainCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/cardbg"
+        android:elevation="8dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Queue Position"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Token Boxes Container -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/tokenContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Boxes dynamically add honge -->
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!-- Position Text -->
+        <TextView
+            android:id="@+id/txtPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Position: 5"
+            android:textSize="16sp"
+            android:textColor="#555"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

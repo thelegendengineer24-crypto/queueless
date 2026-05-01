@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/gradientf">
 
     <!-- Top Logo -->
     <ImageView
@@ -17,7 +17,7 @@
         android:src="@drawable/queuelestextlogo" />
 
     <!-- Card Container -->
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/registerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,6 +103,6 @@
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

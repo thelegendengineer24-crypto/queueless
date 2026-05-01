@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/gradiente">
 
-
+    <!-- LOGO -->
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="208dp"
-        android:layout_above="@+id/cardView"
-        android:layout_marginTop="10dp"
-        android:contentDescription="logo"
-        android:src="@drawable/queue" />
+        android:id="@+id/logoImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/queue"
+        android:contentDescription="App Logo" />
 
+    <!-- CARD LOGIN -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/logoImg"
         android:layout_margin="24dp"
-        app:cardBackgroundColor="#CFECF6F6"
+        app:cardBackgroundColor="#F6FFFFFF"
         app:cardCornerRadius="24dp"
-        app:cardElevation="8dp">
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,74 +32,65 @@
             android:orientation="vertical"
             android:padding="24dp">
 
+            <!-- EMAIL -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email">
+                android:hint="Email"
+                app:boxBackgroundMode="outline">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- PASSWORD -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:hint="Password"
-                app:endIconMode="password_toggle">
+                app:endIconMode="password_toggle"
+                app:boxBackgroundMode="outline">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-
-                <EditText
-                    android:id="@+id/editTextNumberPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="numberPassword" />
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- LOGIN BUTTON -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 android:text="Login"
                 android:textSize="16sp"
                 app:cornerRadius="16dp" />
 
+            <!-- REGISTER TEXT -->
             <TextView
                 android:id="@+id/registerTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:text="Don't have an account? Register"
-                android:textColor="#151516"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
-
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-
 
 </RelativeLayout>
