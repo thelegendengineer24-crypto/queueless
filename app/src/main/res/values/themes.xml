@@ -5,5 +5,6 @@
     </style>
 
     <style name="Theme.QueueLess.Compose" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <style name="Theme.Queueless" parent="Theme.Material3.Dark">
 
 </resources>
