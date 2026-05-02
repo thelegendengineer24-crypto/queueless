@@ -1,90 +1,430 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiente">
+    android:background="#060D1F">
 
-    <ImageView
-        android:layout_width="422dp"
+    <!-- Background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mesh_gradient" />
+
+    <!-- Glow Top-Left -->
+    <View
+        android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/businessactivity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="top|start"
+        android:layout_marginTop="-60dp"
+        android:layout_marginStart="-60dp"
+        android:background="@drawable/glow_circle_blue"
+        android:alpha="0.35" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="12dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#E0E0E0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <!-- Glow Bottom-Right -->
+    <View
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginEnd="-50dp"
+        android:background="@drawable/glow_circle_purple"
+        android:alpha="0.3" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:paddingBottom="32dp">
 
+            <!-- ══════════════════════════ -->
+            <!--         HEADER            -->
+            <!-- ══════════════════════════ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="38dp"
+                android:paddingBottom="10dp">
+
+                <!-- Back Button -->
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logout"
+                    android:background="@drawable/bg_icon_button"
+                    android:padding="10dp"
+                    android:rotation="180"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Back" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADMIN"
+                        android:textSize="10sp"
+                        android:textColor="#6B8CC7"
+                        android:letterSpacing="0.15"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Register Business"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════ -->
+            <!--     INFO BANNER CARD      -->
+            <!-- ══════════════════════════ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_glass_card_blue"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="20dp"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_store"
+                    android:background="@drawable/bg_icon_teal"
+                    android:padding="7dp"
+                    android:layout_marginEnd="14dp"
+                    android:contentDescription="Store" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apna business register karo"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ek baar register karo, hamesha ke liye manage karo"
+                        android:textSize="11sp"
+                        android:textColor="#7A9AD4" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════ -->
+            <!--      MAIN FORM CARD       -->
+            <!-- ══════════════════════════ -->
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business Details"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
-                android:text="Register Business"
-                android:textColor="#222222"
-                android:textSize="22sp"
-                android:textStyle="bold"/>
+                android:orientation="vertical"
+                android:background="@drawable/bg_glass_card_dark"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="18dp"
+                android:padding="18dp">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Business Name">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBusinessName"
+                <!-- Business Name -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="Business Name"
+                    app:startIconDrawable="@drawable/ic_store"
+                    app:startIconTint="#6B8CC7"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="14dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Unique Business ID">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBusinessName"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:inputType="textCapWords"
+                        android:imeOptions="actionNext" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etUniqueId"
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Unique Business ID -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="Unique Business ID"
+                    app:startIconDrawable="@drawable/ic_token"
+                    app:startIconTint="#6B8CC7"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="14dp">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUniqueId"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:inputType="textNoSuggestions"
+                        android:imeOptions="actionNext" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- ✅ NEW FEATURE: Business Type Dropdown -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Business Type"
+                    app:startIconDrawable="@drawable/ic_queue_status"
+                    app:startIconTint="#6B8CC7"
+                    app:endIconMode="dropdown_menu"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginBottom="14dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinnerBusinessType"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:inputType="none" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- ✅ NEW FEATURE: Opening Time -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Opening Time (e.g. 9:00 AM)"
+                    app:startIconDrawable="@drawable/ic_history"
+                    app:startIconTint="#6B8CC7"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etOpeningTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:focusable="false"
+                        android:clickable="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- ✅ NEW FEATURE: Closing Time -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Closing Time (e.g. 6:00 PM)"
+                    app:startIconDrawable="@drawable/ic_history"
+                    app:startIconTint="#6B8CC7"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="14dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etClosingTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:focusable="false"
+                        android:clickable="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- ✅ NEW FEATURE: Max Tokens Per Day -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Max Tokens Per Day"
+                    app:startIconDrawable="@drawable/ic_token"
+                    app:startIconTint="#6B8CC7"
+                    app:boxCornerRadiusTopStart="14dp"
+                    app:boxCornerRadiusTopEnd="14dp"
+                    app:boxCornerRadiusBottomStart="14dp"
+                    app:boxCornerRadiusBottomEnd="14dp"
+                    app:boxBackgroundColor="#1A2444"
+                    app:boxStrokeColor="#2952A3"
+                    app:hintTextColor="#6B8CC7"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_marginBottom="6dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etMaxTokens"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="#FFFFFF"
+                        android:inputType="number"
+                        android:imeOptions="actionDone" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════ -->
+            <!--   PREVIEW CHIP (dynamic)  -->
+            <!-- ══════════════════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_selected_chip"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="20dp"
+                android:padding="14dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_check_circle"
+                    android:tint="#00E676"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Preview" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPreviewName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Business Name"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:id="@+id/tvPreviewId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID: ---"
+                        android:textSize="11sp"
+                        android:textColor="#5C7DB0" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ready"
+                    android:textSize="10sp"
+                    android:textColor="#00E676"
+                    android:background="@drawable/bg_status_badge_green"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp" />
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════ -->
+            <!--     CREATE BUTTON         -->
+            <!-- ══════════════════════════ -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCreateBusiness"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/buttonbgc"
-                android:text="Create Business"
-                android:textAllCaps="false"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Register Business"
                 android:textSize="16sp"
-                app:cornerRadius="25dp" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="16dp"
+                app:backgroundTint="#1565C0"
+                app:icon="@drawable/ic_store"
+                app:iconGravity="textStart"
+                app:iconTint="#FFFFFF"
+                style="@style/Widget.Material3.Button" />
+
+            <!-- Cancel Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="16dp"
+                android:text="Cancel"
+                android:textSize="14sp"
+                android:textColor="#FF6B6B"
+                app:cornerRadius="16dp"
+                app:backgroundTint="#1A1A2E"
+                app:strokeColor="#FF6B6B"
+                app:strokeWidth="1dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
 
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
