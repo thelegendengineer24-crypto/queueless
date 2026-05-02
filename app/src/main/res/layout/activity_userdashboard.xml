@@ -68,7 +68,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Queueless"
+                        android:text="Queue"
                         android:textSize="26sp"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF"
@@ -87,8 +87,8 @@
                     <!-- Profile Avatar -->
                     <ImageView
                         android:id="@+id/ivAvatar"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:src="@drawable/ic_profile"
                         android:background="@drawable/bg_avatar_circle"
                         android:scaleType="centerCrop"
