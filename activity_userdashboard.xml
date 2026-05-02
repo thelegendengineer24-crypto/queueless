@@ -1,102 +1,749 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradientc">
+    android:background="#0A0F1E">
 
-    <LinearLayout
+    <!-- ── Animated Gradient Background ── -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mesh_gradient" />
 
+    <!-- Decorative Glow Circle Top-Left -->
+    <View
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginStart="-80dp"
+        android:background="@drawable/glow_circle_blue"
+        android:alpha="0.35" />
 
+    <!-- Decorative Glow Circle Bottom-Right -->
+    <View
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="-60dp"
+        android:layout_marginEnd="-60dp"
+        android:background="@drawable/glow_circle_purple"
+        android:alpha="0.4" />
 
+    <!-- ── Main Scrollable Content ── -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-        <!-- Welcome -->
-
-        <ImageView
-            android:layout_width="347dp"
-            android:layout_height="216dp"
-            android:src="@drawable/queuelestextlogo"
-
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome, User 👋"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="30dp"/>
-
-        <!-- Main Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@android:color/white"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
 
+            <!-- ══════════════════════════════ -->
+            <!--         TOP HEADER SECTION     -->
+            <!-- ══════════════════════════════ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="56dp"
+                android:paddingBottom="8dp">
 
+                <!-- Top Row: Logo + Notification Bell -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="28dp">
+
+                    <!-- QueueLess Logo Text -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Queueless"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <!-- Notification Bell -->
+                    <ImageView
+                        android:id="@+id/btnNotification"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_bell"
+                        android:background="@drawable/bg_icon_button"
+                        android:padding="10dp"
+                        android:contentDescription="Notifications" />
+
+                    <!-- Profile Avatar -->
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_profile"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:scaleType="centerCrop"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="Profile" />
+
+                </LinearLayout>
+
+                <!-- Welcome Greeting -->
                 <TextView
-                    android:id="@+id/tvSelectedBusiness"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selected Business: XYZ Clinic"
-                    android:textSize="16sp"
-                    android:textColor="#333"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="Good Morning,"
+                    android:textSize="15sp"
+                    android:textColor="#8A9BC8"
+                    android:letterSpacing="0.04"
+                    android:layout_marginBottom="4dp" />
 
-                <Button
-                    android:id="@+id/btnGenerateToken"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Generate Token"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#43A047"
-                    android:textColor="@android:color/white"
-                    android:layout_marginBottom="15dp"/>
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="28dp">
 
-                <Button
-                    android:id="@+id/btnViewStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="View Token Status"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#1E88E5"
-                    android:textColor="@android:color/white"
-                    android:layout_marginBottom="15dp"/>
+                    <TextView
+                        android:id="@+id/tvWelcome"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Rahul Singh 👋"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-medium" />
 
-                <Button
-                    android:id="@+id/btnHistory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="My History"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#F9A825"
-                    android:textColor="@android:color/white"
-                    android:layout_marginBottom="15dp"/>
+                    <!-- Active Token Badge (shows if token active) -->
+                    <TextView
+                        android:id="@+id/tvActiveBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● Live"
+                        android:textSize="11sp"
+                        android:textColor="#00E676"
+                        android:background="@drawable/bg_live_badge"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/btnLogout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Logout"
-                    android:textAllCaps="false"
-                    android:backgroundTint="#E53935"
-                    android:textColor="@android:color/white"/>
+                </LinearLayout>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <!-- ══════════════════════════════ -->
+            <!--     ACTIVE TOKEN CARD (Hero)   -->
+            <!-- ══════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardActiveToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
 
-    </LinearLayout>
+                <!-- Glassmorphism background -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_blue"
+                    android:padding="24dp">
 
-</ScrollView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Your Token"
+                            android:textSize="13sp"
+                            android:textColor="#A8C4FF"
+                            android:letterSpacing="0.08" />
+
+                        <TextView
+                            android:id="@+id/tvTokenStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Waiting"
+                            android:textSize="11sp"
+                            android:textColor="#FFD54F"
+                            android:background="@drawable/bg_status_badge_yellow"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="5dp" />
+
+                    </LinearLayout>
+
+                    <!-- Big Token Number -->
+                    <TextView
+                        android:id="@+id/tvTokenNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#042"
+                        android:textSize="72sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-black"
+                        android:letterSpacing="-0.02"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvBusinessName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City Hospital — OPD Counter"
+                        android:textSize="14sp"
+                        android:textColor="#A8C4FF"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Queue Progress -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Queue Position"
+                            android:textSize="12sp"
+                            android:textColor="#7A9AD4" />
+
+                        <TextView
+                            android:id="@+id/tvQueuePosition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 ahead of you"
+                            android:textSize="12sp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressQueue"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progress="65"
+                        android:progressDrawable="@drawable/progress_queue_gradient"
+                        android:background="@drawable/bg_progress_track"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Est. Wait Time -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Est. Wait"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvWaitTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="~12 min"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Now Serving"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvNowServing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="#039"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="#00E676" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnViewStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:text="Refresh"
+                            android:textSize="13sp"
+                            android:textColor="#FFFFFF"
+                            app:cornerRadius="14dp"
+                            app:backgroundTint="#2952A3"
+                            style="@style/Widget.Material3.Button" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════ -->
+            <!--       SEARCH BUSINESS CARD     -->
+            <!-- ══════════════════════════════ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take a New Token"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="20dp">
+
+                    <!-- Search Bar -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Search business..."
+                        app:startIconDrawable="@drawable/ic_search"
+                        app:startIconTint="#6B8CC7"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:boxBackgroundColor="#1A2444"
+                        app:boxStrokeColor="#2952A3"
+                        app:hintTextColor="#6B8CC7"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="14dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSearchBusiness"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:textColor="#FFFFFF"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Business Dropdown -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Business"
+                        app:startIconDrawable="@drawable/ic_store"
+                        app:startIconTint="#6B8CC7"
+                        app:endIconMode="dropdown_menu"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:boxBackgroundColor="#1A2444"
+                        app:boxStrokeColor="#2952A3"
+                        app:hintTextColor="#6B8CC7"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_marginBottom="16dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spinnerBusiness"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:textColor="#FFFFFF"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Selected Business Info Chip -->
+                    <LinearLayout
+                        android:id="@+id/layoutSelectedBusiness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/bg_selected_chip"
+                        android:padding="14dp"
+                        android:layout_marginBottom="20dp"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_store"
+                            android:background="@drawable/bg_icon_teal"
+                            android:padding="6dp"
+                            android:layout_marginEnd="12dp"
+                            android:contentDescription="Business Icon" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Selected"
+                                android:textSize="11sp"
+                                android:textColor="#5C7DB0" />
+
+                            <TextView
+                                android:id="@+id/tvSelectedBusiness"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="City Hospital"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_check_circle"
+                            android:contentDescription="Selected"
+                            android:tint="#00E676" />
+
+                    </LinearLayout>
+
+                    <!-- Generate Token Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGenerateToken"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Generate Token"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:letterSpacing="0.02"
+                        app:cornerRadius="18dp"
+                        app:backgroundTint="#1565C0"
+                        app:icon="@drawable/ic_token"
+                        app:iconGravity="textStart"
+                        app:iconTint="#FFFFFF"
+                        style="@style/Widget.Material3.Button" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══════════════════════════════ -->
+            <!--       QUICK ACTIONS ROW        -->
+            <!-- ══════════════════════════════ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quick Actions"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="24dp"
+                android:weightSum="3">
+
+                <!-- View Status -->
+                <LinearLayout
+                    android:id="@+id/cardStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_quick_action_blue"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_queue_status"
+                        android:tint="#FFFFFF"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="Token Status" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Token\nStatus"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- History -->
+                <LinearLayout
+                    android:id="@+id/cardHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_quick_action_teal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_history"
+                        android:tint="#FFFFFF"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="History" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My\nHistory"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:gravity="center"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Logout -->
+                <LinearLayout
+                    android:id="@+id/cardLogout"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_quick_action_dark"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_logout"
+                        android:tint="#FF6B6B"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="Logout" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
+                        android:textSize="12sp"
+                        android:textColor="#FF6B6B"
+                        android:gravity="center"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════════ -->
+            <!--       RECENT ACTIVITY CARD     -->
+            <!-- ══════════════════════════════ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Activity"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_store"
+                        android:background="@drawable/bg_icon_blue"
+                        android:padding="8dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="Business" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City Bank — Token #021"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="2dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yesterday, 2:30 PM"
+                            android:textSize="12sp"
+                            android:textColor="#5C7DB0" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Done"
+                        android:textSize="11sp"
+                        android:textColor="#00E676"
+                        android:background="@drawable/bg_status_badge_green"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Second Recent Item -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_store"
+                        android:background="@drawable/bg_icon_purple"
+                        android:padding="8dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="Business" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City Hospital — Token #042"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="2dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Today, 10:15 AM"
+                            android:textSize="12sp"
+                            android:textColor="#5C7DB0" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Active"
+                        android:textSize="11sp"
+                        android:textColor="#FFD54F"
+                        android:background="@drawable/bg_status_badge_yellow"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
