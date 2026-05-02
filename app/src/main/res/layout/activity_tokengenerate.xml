@@ -1,65 +1,541 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientd">
+    android:background="#0A0F1E">
 
-
-    <ImageView
+    <!-- Mesh Gradient Background -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="218dp"
-        android:src="@drawable/queuelestextlogo"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mesh_gradient" />
 
-    <!-- Center Card -->
-    <LinearLayout
-        android:layout_width="364dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="24dp"
-        android:background="@drawable/cardbg"
-        android:elevation="8dp"
-        android:orientation="vertical"
-        android:padding="24dp">
+    <!-- Glow Top-Left -->
+    <View
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginStart="-80dp"
+        android:background="@drawable/glow_circle_blue"
+        android:alpha="0.3" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:text="Generate Your Token"
-            android:textColor="#333"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <!-- Glow Bottom-Right -->
+    <View
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="-60dp"
+        android:layout_marginEnd="-60dp"
+        android:background="@drawable/glow_circle_purple"
+        android:alpha="0.35" />
 
-        <Spinner
-            android:id="@+id/businessSpinner"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:padding="10dp" />
-
-        <Button
-            android:id="@+id/btnGenerateToken"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/buttonbg"
-            android:text="Generate Token"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/txtTokenNumber"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:text=""
-            android:textColor="#1F4037"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
 
-    </LinearLayout>
+            <!-- ══ HEADER ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="52dp"
+                android:paddingBottom="20dp">
 
-</RelativeLayout>
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:background="@drawable/bg_icon_button"
+                    android:padding="10dp"
+                    android:contentDescription="Back"
+                    android:layout_marginEnd="14dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Queueless"
+                        android:textSize="13sp"
+                        android:textColor="#6B8CC7"
+                        android:letterSpacing="0.05" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generate Token"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ══ BUSINESS SELECTION CARD ══ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Business"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="10dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="20dp">
+
+                    <!-- Search Bar -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Search business..."
+                        app:startIconDrawable="@drawable/ic_search"
+                        app:startIconTint="#6B8CC7"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:boxBackgroundColor="#1A2444"
+                        app:boxStrokeColor="#2952A3"
+                        app:hintTextColor="#6B8CC7"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="14dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSearchBusiness"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:textColor="#FFFFFF"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Business Spinner -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Business"
+                        app:startIconDrawable="@drawable/ic_store"
+                        app:startIconTint="#6B8CC7"
+                        app:endIconMode="dropdown_menu"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:boxBackgroundColor="#1A2444"
+                        app:boxStrokeColor="#2952A3"
+                        app:hintTextColor="#6B8CC7"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/businessSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:textColor="#FFFFFF"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ SELECTED BUSINESS CHIP ══ -->
+            <LinearLayout
+                android:id="@+id/layoutSelectedBusiness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_selected_chip"
+                android:padding="14dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_store"
+                    android:background="@drawable/bg_icon_teal"
+                    android:padding="7dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Business" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selected"
+                        android:textSize="11sp"
+                        android:textColor="#5C7DB0" />
+
+                    <TextView
+                        android:id="@+id/tvSelectedBusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_check_circle"
+                    android:tint="#00E676"
+                    android:contentDescription="Confirmed" />
+            </LinearLayout>
+
+            <!-- ══ QUEUE PREVIEW CARD ══ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardQueuePreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_blue"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Live Queue Info"
+                        android:textSize="13sp"
+                        android:textColor="#A8C4FF"
+                        android:letterSpacing="0.06"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Stats Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Now Serving -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Now Serving"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvNowServing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="#--"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="#00E676"
+                                android:fontFamily="sans-serif-black" />
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#1E3A6E"
+                            android:layout_marginHorizontal="8dp" />
+
+                        <!-- People Ahead -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="In Queue"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvPeopleAhead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF"
+                                android:fontFamily="sans-serif-black" />
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#1E3A6E"
+                            android:layout_marginHorizontal="8dp" />
+
+                        <!-- Est. Wait -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Est. Wait"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvEstWait"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFD54F"
+                                android:fontFamily="sans-serif-black" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Progress Bar -->
+                    <ProgressBar
+                        android:id="@+id/progressQueue"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:progress="40"
+                        android:progressDrawable="@drawable/progress_queue_gradient"
+                        android:background="@drawable/bg_progress_track" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ GENERATE BUTTON ══ -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGenerateToken"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Generate Token"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:letterSpacing="0.02"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cornerRadius="20dp"
+                app:backgroundTint="#1565C0"
+                app:icon="@drawable/ic_token"
+                app:iconGravity="textStart"
+                app:iconTint="#FFFFFF"
+                style="@style/Widget.Material3.Button" />
+
+            <!-- ══ SUCCESS CARD (shown after token generated) ══ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSuccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_glass_card_blue"
+                    android:padding="32dp">
+
+                    <!-- Token Number Big -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your Token"
+                        android:textSize="14sp"
+                        android:textColor="#A8C4FF"
+                        android:letterSpacing="0.08"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/txtTokenNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#000"
+                        android:textSize="80sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-black"
+                        android:letterSpacing="-0.02"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvTokenBusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City Hospital"
+                        android:textSize="14sp"
+                        android:textColor="#A8C4FF"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Status Badge -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● Waiting"
+                        android:textSize="13sp"
+                        android:textColor="#FFD54F"
+                        android:background="@drawable/bg_status_badge_yellow"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="6dp"
+                        android:layout_marginBottom="28dp" />
+
+                    <!-- Info Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="24dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Position"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvPosition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="--"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Est. Wait"
+                                android:textSize="11sp"
+                                android:textColor="#7A9AD4"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvWaitTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-- min"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFFFFF" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- CTA Buttons -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnViewStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Track My Token"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="16dp"
+                        app:backgroundTint="#1565C0"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_marginBottom="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Back to Home"
+                        android:textSize="15sp"
+                        android:textColor="#A8C4FF"
+                        app:cornerRadius="16dp"
+                        app:backgroundTint="#1A2444"
+                        style="@style/Widget.Material3.Button" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

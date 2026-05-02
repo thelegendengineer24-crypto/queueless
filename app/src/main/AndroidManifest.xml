@@ -1,42 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Firebase / Network -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/queuelessicon"
+        android:icon="@drawable/ic_queueless"
         android:roundIcon="@drawable/roundappiconversi"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Queueless"
-        tools:targetApi="31">
+        android:theme="@style/Theme.Queueless">
 
-        <!-- LAUNCHER -->
+        <!-- ══════════════════════════════════════
+             SPLASH  — single LAUNCHER entry point
+        ═══════════════════════════════════════ -->
         <activity
-            android:name=".Activity_Roleselection"
-            android:exported="true">
+            android:name=".Activity_Splashscreen"
+            android:exported="true"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- LOGIN / REGISTER -->
-        <activity android:name=".Activity_Login" android:exported="false"/>
-        <activity android:name=".Activity_Register" android:exported="false"/>
+        <!-- ══════════════════════════════════════
+             ROLE SELECTION
+        ═══════════════════════════════════════ -->
+        <activity
+            android:name=".Activity_Roleselection"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <!-- USER FLOW -->
-        <activity android:name=".Activity_Userdashboard" android:exported="false"/>
-        <activity android:name=".Activity_Tokenbooking" android:exported="false"/>
-        <activity android:name=".Activity_Tokengenerate" android:exported="false"/>
-        <activity android:name=".Activity_Tokenstatus" android:exported="false"/>
+        <!-- ══════════════════════════════════════
+             AUTH
+        ═══════════════════════════════════════ -->
+        <activity
+            android:name=".Activity_Login"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
 
-        <!-- ADMIN FLOW -->
-        <activity android:name=".Activity_Admindashboard" android:exported="false"/>
-        <activity android:name=".Activity_Createbusiness" android:exported="false"/>
-        <activity android:name=".Activity_Selectbusiness" android:exported="false"/>
+        <activity
+            android:name=".Activity_Register"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ══════════════════════════════════════
+             USER FLOW
+        ═══════════════════════════════════════ -->
+        <activity
+            android:name=".Activity_Userdashboard"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity_Selectbusiness"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity_tokenbooking"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity_tokengenerate"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity_tokenstatus"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- ══════════════════════════════════════
+             ADMIN FLOW
+        ═══════════════════════════════════════ -->
+        <activity
+            android:name=".Activity_Admindashboard"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity_Createbusiness"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
+
 </manifest>

@@ -6,13 +6,11 @@
     android:layout_height="match_parent"
     android:background="#060D1F">
 
-    <!-- Background -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_mesh_gradient" />
 
-    <!-- Glow Top-Right -->
     <View
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -22,17 +20,6 @@
         android:background="@drawable/glow_circle_purple"
         android:alpha="0.4" />
 
-    <!-- Glow Bottom-Left -->
-    <View
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="bottom|start"
-        android:layout_marginBottom="-50dp"
-        android:layout_marginStart="-50dp"
-        android:background="@drawable/glow_circle_blue"
-        android:alpha="0.3" />
-
-    <!-- ── Main Scroll ── -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,9 +31,7 @@
             android:orientation="vertical"
             android:paddingBottom="28dp">
 
-            <!-- ══════════════════════════ -->
-            <!--         HEADER            -->
-            <!-- ══════════════════════════ -->
+            <!-- HEADER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,7 +40,6 @@
                 android:paddingTop="38dp"
                 android:paddingBottom="6dp">
 
-                <!-- Top Row: Title + Icons -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,16 +52,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ADMIN PANEL"
                             android:textSize="10sp"
                             android:textColor="#6B8CC7"
-                            android:letterSpacing="0.15"
-                            android:layout_marginBottom="2dp"/>
-
+                            android:letterSpacing="0.15"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -85,8 +66,18 @@
                             android:textSize="24sp"
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"/>
-
                     </LinearLayout>
+
+                    <!-- QR GENERATOR BUTTON -->
+                    <ImageView
+                        android:id="@+id/btnShowQr"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_qrcode"
+                        android:background="@drawable/bg_icon_button"
+                        android:padding="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="Generate QR"/>
 
                     <ImageView
                         android:id="@+id/btnNotification"
@@ -95,8 +86,7 @@
                         android:src="@drawable/ic_bell"
                         android:background="@drawable/bg_icon_button"
                         android:padding="10dp"
-                        android:layout_marginEnd="8dp"
-                        android:contentDescription="Notifications"/>
+                        android:layout_marginEnd="8dp"/>
 
                     <ImageView
                         android:id="@+id/btnLogout"
@@ -105,43 +95,34 @@
                         android:src="@drawable/ic_logout"
                         android:background="@drawable/bg_icon_button"
                         android:padding="10dp"
-                        android:tint="#FF6B6B"
-                        android:contentDescription="Logout"/>
-
+                        android:tint="#FF6B6B"/>
                 </LinearLayout>
 
-                <!-- Business Name Chip -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_selected_chip"
-                    android:padding="12dp"
-                    android:layout_marginBottom="4dp">
-
+                    android:padding="12dp">
                     <ImageView
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:src="@drawable/ic_store"
                         android:background="@drawable/bg_icon_teal"
                         android:padding="5dp"
-                        android:layout_marginEnd="10dp"
-                        android:contentDescription="Business"/>
-
+                        android:layout_marginEnd="10dp"/>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Managing"
                             android:textSize="10sp"
                             android:textColor="#5C7DB0"/>
-
                         <TextView
                             android:id="@+id/tvBusinessName"
                             android:layout_width="wrap_content"
@@ -150,9 +131,7 @@
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="#FFFFFF"/>
-
                     </LinearLayout>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -162,24 +141,17 @@
                         android:background="@drawable/bg_live_badge"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="3dp"/>
-
                 </LinearLayout>
-
             </LinearLayout>
 
-            <!-- ══════════════════════════ -->
-            <!--       STATS CARDS ROW     -->
-            <!-- ══════════════════════════ -->
+            <!-- STATS CARDS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="8dp"
                 android:weightSum="2">
-
-                <!-- Current Token Card -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="120dp"
@@ -189,16 +161,12 @@
                     android:gravity="center_vertical"
                     android:padding="16dp"
                     android:background="@drawable/bg_quick_action_blue">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NOW SERVING"
                         android:textSize="9sp"
-                        android:textColor="#A8C4FF"
-                        android:letterSpacing="0.12"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textColor="#A8C4FF"/>
                     <TextView
                         android:id="@+id/txtCurrentToken"
                         android:layout_width="wrap_content"
@@ -206,19 +174,8 @@
                         android:text="0"
                         android:textSize="44sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Current Token"
-                        android:textSize="11sp"
-                        android:textColor="#A8C4FF"/>
-
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
-
-                <!-- Total Tokens Card -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="120dp"
@@ -227,16 +184,12 @@
                     android:gravity="center_vertical"
                     android:padding="16dp"
                     android:background="@drawable/bg_quick_action_teal">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TODAY'S TOTAL"
                         android:textSize="9sp"
-                        android:textColor="#7AFFD4"
-                        android:letterSpacing="0.12"
-                        android:layout_marginBottom="4dp"/>
-
+                        android:textColor="#7AFFD4"/>
                     <TextView
                         android:id="@+id/txtTotalTokens"
                         android:layout_width="wrap_content"
@@ -244,121 +197,66 @@
                         android:text="0"
                         android:textSize="44sp"
                         android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginBottom="2dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tokens Issued"
-                        android:textSize="11sp"
-                        android:textColor="#7AFFD4"/>
-
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
-
             </LinearLayout>
 
-            <!-- Remaining + Avg Wait Row -->
+            <!-- REMAINING & WAIT -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginTop="8dp"
                 android:weightSum="2">
-
-                <!-- Remaining in Queue -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="72dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="7dp"
-                    android:orientation="horizontal"
+                    android:background="@drawable/bg_glass_card_dark"
                     android:gravity="center_vertical"
-                    android:padding="14dp"
-                    android:background="@drawable/bg_glass_card_dark">
-
+                    android:padding="14dp">
                     <ImageView
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:src="@drawable/ic_queue_status"
-                        android:tint="#A8C4FF"
-                        android:layout_marginEnd="10dp"
-                        android:contentDescription="Queue"/>
-
-                    <LinearLayout
+                        android:tint="#A8C4FF"/>
+                    <TextView
+                        android:id="@+id/txtRemaining"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtRemaining"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Remaining"
-                            android:textSize="10sp"
-                            android:textColor="#5C7DB0"/>
-
-                    </LinearLayout>
-
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:layout_marginStart="10dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
-
-                <!-- Avg Wait Time -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="72dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
+                    android:background="@drawable/bg_glass_card_dark"
                     android:gravity="center_vertical"
-                    android:padding="14dp"
-                    android:background="@drawable/bg_glass_card_dark">
-
+                    android:padding="14dp">
                     <ImageView
                         android:layout_width="26dp"
                         android:layout_height="26dp"
                         android:src="@drawable/ic_history"
-                        android:tint="#FFD54F"
-                        android:layout_marginEnd="10dp"
-                        android:contentDescription="Wait Time"/>
-
-                    <LinearLayout
+                        android:tint="#FFD54F"/>
+                    <TextView
+                        android:id="@+id/txtAvgWait"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtAvgWait"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="-- min"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Avg Wait"
-                            android:textSize="10sp"
-                            android:textColor="#5C7DB0"/>
-
-                    </LinearLayout>
-
+                        android:text="-- min"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:layout_marginStart="10dp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
-
             </LinearLayout>
 
-            <!-- ══════════════════════════ -->
-            <!--     QUEUE CONTROL CARD    -->
-            <!-- ══════════════════════════ -->
+            <!-- QUEUE CONTROL -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -367,6 +265,7 @@
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"/>
 
             <LinearLayout
@@ -375,228 +274,66 @@
                 android:orientation="vertical"
                 android:background="@drawable/bg_glass_card_blue"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="18dp"
                 android:padding="18dp">
-
-                <!-- Progress Bar -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="8dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Queue Progress"
-                        android:textSize="12sp"
-                        android:textColor="#A8C4FF"/>
-
-                    <TextView
-                        android:id="@+id/txtQueuePercent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0%"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#FFFFFF"/>
-
-                </LinearLayout>
-
                 <ProgressBar
                     android:id="@+id/progressQueue"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:progress="0"
                     android:progressDrawable="@drawable/progress_queue_gradient"
                     android:background="@drawable/bg_progress_track"
                     android:layout_marginBottom="18dp"/>
-
-                <!-- Next Token Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNext"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:text="▶  Next Token"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF"
                     app:cornerRadius="14dp"
-                    app:backgroundTint="#1565C0"
-                    style="@style/Widget.Material3.Button"
-                    android:layout_marginBottom="10dp"/>
-
-                <!-- Reset Queue Button -->
+                    app:backgroundTint="#1565C0"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnReset"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="↺  Reset Queue"
-                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"
                     android:textColor="#FF6B6B"
                     app:cornerRadius="14dp"
-                    app:backgroundTint="#1A1A2E"
                     app:strokeColor="#FF6B6B"
                     app:strokeWidth="1dp"
                     style="@style/Widget.Material3.Button.OutlinedButton"/>
-
             </LinearLayout>
 
-            <!-- ══════════════════════════ -->
-            <!--     AVG TIME UPDATE CARD  -->
-            <!-- ══════════════════════════ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"/>
-
+            <!-- SETTINGS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/bg_glass_card_dark"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="18dp"
+                android:layout_margin="16dp"
                 android:padding="18dp">
-
-                <!-- Avg Time Input -->
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutAvgTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Avg Time Per Token (mins)"
-                    app:startIconDrawable="@drawable/ic_history"
-                    app:startIconTint="#6B8CC7"
+                    android:hint="Avg Time (mins)"
                     app:boxCornerRadiusTopStart="14dp"
-                    app:boxCornerRadiusTopEnd="14dp"
-                    app:boxCornerRadiusBottomStart="14dp"
                     app:boxCornerRadiusBottomEnd="14dp"
-                    app:boxBackgroundColor="#1A2444"
-                    app:boxStrokeColor="#2952A3"
-                    app:hintTextColor="#6B8CC7"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_marginBottom="12dp">
-
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtAvgTime"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:textColor="#FFFFFF"
+                        android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:imeOptions="actionDone"/>
-
+                        android:textColor="#FFFFFF"/>
                 </com.google.android.material.textfield.TextInputLayout>
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnUpdateTime"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Update Avg Time"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
-                    app:cornerRadius="14dp"
-                    app:backgroundTint="#00695C"
-                    style="@style/Widget.Material3.Button"/>
-
-            </LinearLayout>
-
-            <!-- ══════════════════════════ -->
-            <!--     QUICK ACTIONS ROW     -->
-            <!-- ══════════════════════════ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Quick Actions"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="10dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="8dp"
-                android:weightSum="2">
-
-                <!-- Register Business -->
-                <LinearLayout
-                    android:id="@+id/btnBusinessRegister"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="7dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_quick_action_teal"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackgroundBorderless">
-
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/ic_store"
-                        android:tint="#FFFFFF"
-                        android:layout_marginBottom="6dp"
-                        android:contentDescription="Register Business"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Register\nBusiness"
-                        android:textSize="11sp"
-                        android:textColor="#FFFFFF"
-                        android:gravity="center"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-                <!-- View History -->
-                <LinearLayout
-                    android:id="@+id/btnViewHistory"
-                    android:layout_width="0dp"
-                    android:layout_height="90dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_quick_action_dark"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackgroundBorderless">
-
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/ic_history"
-                        android:tint="#A8C4FF"
-                        android:layout_marginBottom="6dp"
-                        android:contentDescription="History"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="View\nHistory"
-                        android:textSize="11sp"
-                        android:textColor="#A8C4FF"
-                        android:gravity="center"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
+                    android:text="Update Time"
+                    android:layout_marginTop="10dp"
+                    app:backgroundTint="#00695C"/>
             </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

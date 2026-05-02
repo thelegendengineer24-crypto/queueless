@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- ══════════════════════════════════════
+         Main App Theme — dark, no action bar
+    ═══════════════════════════════════════ -->
     <style name="Theme.Queueless" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Status bar transparent, icons light -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Nav bar matches app dark background -->
+        <item name="android:navigationBarColor">#0D1B2A</item>
+
+        <!-- Splash / window background so no white flash on launch -->
+        <item name="android:windowBackground">@drawable/bg_mesh_gradient</item>
+
+        <!-- Disable default action bar just in case -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.QueueLess.Compose" parent="Theme.Material3.DayNight.NoActionBar"/>
-    <style name="Theme.Queueless" parent="Theme.Material3.Dark">
+    <!-- ══════════════════════════════════════
+         Compose theme (if used alongside Compose)
+    ═══════════════════════════════════════ -->
+    <style name="Theme.QueueLess.Compose" parent="Theme.Material3.DayNight.NoActionBar" />
 
 </resources>

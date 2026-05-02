@@ -1,62 +1,496 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tokenbg">
+    android:background="#0A0F1E">
 
+    <!-- Mesh Gradient -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_mesh_gradient" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="12dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <!-- Glow Top-Left -->
+    <View
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginStart="-70dp"
+        android:background="@drawable/glow_circle_purple"
+        android:alpha="0.3" />
+
+    <!-- Glow Bottom-Right -->
+    <View
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginEnd="-50dp"
+        android:background="@drawable/glow_circle_blue"
+        android:alpha="0.25" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="28dp">
+            android:paddingBottom="40dp">
 
-            <TextView
-                android:layout_height="match_parent"
+            <!-- ══ HEADER ══ -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:id="@+id/tvServiceName"
-                android:text="Service Name"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="52dp"
+                android:paddingBottom="20dp">
 
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:background="@drawable/bg_icon_button"
+                    android:padding="10dp"
+                    android:contentDescription="Back"
+                    android:layout_marginEnd="14dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Queueless"
+                        android:textSize="12sp"
+                        android:textColor="#6B8CC7"
+                        android:letterSpacing="0.05" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Book a Slot"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ══ BUSINESS INFO CARD ══ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_glass_card_blue"
+                    android:padding="18dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_store"
+                        android:background="@drawable/bg_icon_teal"
+                        android:padding="10dp"
+                        android:layout_marginEnd="14dp"
+                        android:contentDescription="Business" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvBookingBusinessName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City Hospital"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:layout_marginBottom="3dp" />
+
+                        <TextView
+                            android:id="@+id/tvBookingBusinessType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="OPD Counter • Open Now"
+                            android:textSize="12sp"
+                            android:textColor="#A8C4FF" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● Open"
+                        android:textSize="11sp"
+                        android:textColor="#00E676"
+                        android:background="@drawable/bg_status_badge_green"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ DATE PICKER CARD ══ -->
             <TextView
-                android:layout_height="match_parent"
                 android:layout_width="wrap_content"
-                android:id="@+id/tvTokenNumber"
-                android:text="Your Token"
-                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:text="Choose Date"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#0B0B0B"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="10dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="16dp">
+
+                    <!-- Day chips row — horizontal scroll -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:overScrollMode="never">
+
+                        <LinearLayout
+                            android:id="@+id/layoutDayChips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="4dp">
+
+                            <!-- Day chips are added programmatically in Java -->
+                            <!-- Placeholder chip for layout preview -->
+                            <LinearLayout
+                                android:layout_width="64dp"
+                                android:layout_height="72dp"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:background="@drawable/bg_quick_action_blue"
+                                android:layout_marginEnd="10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="MON"
+                                    android:textSize="10sp"
+                                    android:textColor="#A8C4FF"
+                                    android:layout_marginBottom="4dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="02"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#FFFFFF" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <TextView
+                        android:id="@+id/tvSelectedDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monday, 02 May 2026"
+                        android:textSize="13sp"
+                        android:textColor="#6B8CC7"
+                        android:layout_marginTop="10dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ TIME SLOT CARD ══ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available Slots"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="10dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_dark"
+                    android:padding="16dp">
+
+                    <!-- Morning -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Morning"
+                        android:textSize="12sp"
+                        android:textColor="#6B8CC7"
+                        android:letterSpacing="0.06"
+                        android:layout_marginBottom="10dp" />
+
+                    <com.google.android.widget.SplitMotionEventsLayout
+                        android:id="@+id/gridMorning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+                        <!-- Slots injected programmatically -->
+                    </com.google.android.widget.SplitMotionEventsLayout>
+
+                    <!-- Use a FlexboxLayout substitute with GridLayout -->
+                    <androidx.gridlayout.widget.GridLayout
+                        android:id="@+id/gridSlots"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:columnCount="3"
+                        app:rowCount="4"
+                        android:layout_marginBottom="8dp">
+                        <!-- Time slot items added programmatically -->
+                    </androidx.gridlayout.widget.GridLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ BOOKING SUMMARY CARD ══ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBookingSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_glass_card_blue"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Booking Summary"
+                        android:textSize="14sp"
+                        android:textColor="#A8C4FF"
+                        android:letterSpacing="0.06"
+                        android:layout_marginBottom="14dp" />
+
+                    <!-- Row: Business -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_store"
+                            android:tint="#6B8CC7"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Business" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Business"
+                            android:textSize="13sp"
+                            android:textColor="#7A9AD4" />
+
+                        <TextView
+                            android:id="@+id/tvSummaryBusiness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="City Hospital"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Row: Date -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_calendar"
+                            android:tint="#6B8CC7"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Date" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Date"
+                            android:textSize="13sp"
+                            android:textColor="#7A9AD4" />
+
+                        <TextView
+                            android:id="@+id/tvSummaryDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="02 May 2026"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Row: Time -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="6dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_time"
+                            android:tint="#6B8CC7"
+                            android:layout_marginEnd="10dp"
+                            android:contentDescription="Time" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Time Slot"
+                            android:textSize="13sp"
+                            android:textColor="#7A9AD4" />
+
+                        <TextView
+                            android:id="@+id/tvSummarySlot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10:30 AM"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#1E3A6E"
+                        android:layout_marginVertical="12dp" />
+
+                    <!-- Token assigned -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Booking Token"
+                            android:textSize="14sp"
+                            android:textColor="#A8C4FF" />
+
+                        <TextView
+                            android:id="@+id/tvSummaryToken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="#--"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:fontFamily="sans-serif-black" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ══ CONFIRM BUTTON ══ -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirmBooking"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Confirm Booking"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:letterSpacing="0.02"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="12dp"
+                app:cornerRadius="20dp"
+                app:backgroundTint="#1565C0"
+                app:icon="@drawable/ic_check_circle"
+                app:iconGravity="textStart"
+                app:iconTint="#FFFFFF"
+                style="@style/Widget.Material3.Button" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnBookToken"
+                android:id="@+id/btnGoHome"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Book Token"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                app:cornerRadius="25dp"
-                android:backgroundTint="#4A6CF7"/>
+                android:layout_height="52dp"
+                android:text="Back to Home"
+                android:textSize="15sp"
+                android:textColor="#A8C4FF"
+                android:layout_marginHorizontal="20dp"
+                app:cornerRadius="18dp"
+                app:backgroundTint="#1A2444"
+                style="@style/Widget.Material3.Button" />
 
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
